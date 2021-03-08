@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+struct list
+{
+  int data;
+  struct list* next;
+};
+
+int main(void)
+{
+  struct list *p, *head, *t;
+  p = (struct list*)malloc(sizeof(struct list));
+
+  scanf("%d", &p -> data);
+
+  p -> next = NULL;
+  head = p;
+
+  while (p -> data != 0)
+  {
+    p = (struct list*)malloc(sizeof(struct list));
+
+    scanf("%d", &p -> data);
+    
+    if (p -> data == 0)
+    {
+      break;
+    }
+
+    if (p -> data < head -> data)
+    {
+      p -> next = head;
+      head = p;
+    }
+  }
+
+  t = head;
+
+  while (t)
+  {
+    printf("%d", t -> data);
+    t = t -> next;
+  }
+
+  return 0;
+}
